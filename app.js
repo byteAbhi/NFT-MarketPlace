@@ -101,13 +101,6 @@ app.get('/log', checkLoggedIn, (req, res) => {
   res.render('log', { messages: req.flash('error') });
 });
 
- 
-// app.get('/signup', checkLoggedIn, (req, res) => {
-//   res.render('signup', { messages: req.flash('error') });
-// });
-
-
- 
 
 app.post('/log', async (req, res) => {
   const { username, password } = req.body;

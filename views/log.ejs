@@ -482,3 +482,12 @@ color: #6a1b9a;
 </body>
 
 </html>
+
+<!-- Example: Add this in your EJS template to display flash messages -->
+<% if (messages && messages.length > 0) { %>
+  <ul>
+    <% messages.forEach(message => { %>
+      <li><%= message %></li>
+    <% }); %>
+  </ul>
+<% } %>
