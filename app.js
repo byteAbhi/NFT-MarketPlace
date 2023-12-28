@@ -5,17 +5,23 @@ const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
 const flash = require('express-flash');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mysql = require('mysql');
- 
+
+
+
+
 
 // Access environment variables
 const dbHost = process.env.DB_HOST;
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
 const dbName = process.env.DB_DATABASE;
+const secretKey = process.env.SECRET_KEY ;
+;
 
 //creating connection
 const dbConfig = {
@@ -24,6 +30,30 @@ const dbConfig = {
   password: dbPassword,
   database: dbName
   };
+
+// MySQL Connection Pool for session store
+const sessionStore = new MySQLStore({
+  // MySQL connection options
+  host: dbHost,
+  user: dbUser,
+  password: dbPassword,
+  database: dbName,
+  clearExpired: true,
+  checkExpirationInterval: 900000, // 15 minutes
+  expiration: 86400000, // 1 day
+});
+
+app.use(
+  session({
+    store: sessionStore,
+    secret:secretKey ,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+
+
 // Create a new connection
 const connection = mysql.createConnection(dbConfig);
 
@@ -38,11 +68,7 @@ connection.connect((err) => {
 });
 
 //Set up session and flash:
-app.use(session({
-    secret: 'your_secret_key',
-    resave: false,
-    saveUninitialized: false
-  }));
+ 
   
   app.use(flash());
 

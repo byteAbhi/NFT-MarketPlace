@@ -19,9 +19,11 @@
     "esm": "^3.2.25",
     "express": "^4.18.2",
     "express-flash": "^0.0.2",
+    "express-mysql-session": "^3.0.0",
     "express-session": "^1.17.3",
     "html": "^1.0.0",
     "mysql": "^2.18.1",
+    "mysql2": "^3.6.5",
     "nodemon": "^2.0.22",
     "pug": "^3.0.2"
   }
