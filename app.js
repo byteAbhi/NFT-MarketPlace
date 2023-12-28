@@ -79,8 +79,7 @@ connection.connect((err) => {
   })
 );
 
-  
-  app.use(flash());
+ 
 
 //Add middleware for form data parsing:
 
@@ -92,13 +91,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 //Add a middleware function to check if the user is already logged in:
-const checkLoggedIn = (req, res, next) => {
-  if (req.session.user) {
-    return res.render('error', { message: 'You are already logged in.' });
-  }
-  next();
-};
-
+ 
 
   app.get('/live', (req, res) => {
     res.render('live');
@@ -110,6 +103,9 @@ app.get('/reg', (req, res) => {
 app.get('/collection', (req, res) => {
   res.render('collection');
 });
+app.get('/log', (req, res) => {
+  res.render('log');
+});
 
  
 
@@ -120,19 +116,6 @@ app.get('/', (req, res) => {
  
  
  
-
-app.get('/log', checkLoggedIn, (req, res) => {
-  res.render('log', { messages: req.flash('error') });
-});
-
- 
-// app.get('/signup', checkLoggedIn, (req, res) => {
-//   res.render('signup', { messages: req.flash('error') });
-// });
-
-
- 
-
 app.post('/log', async (req, res) => {
   const { username, password } = req.body;
 
@@ -143,7 +126,7 @@ app.post('/log', async (req, res) => {
     res.redirect('/nft_MktP');
     console.log("login successfully")
   } else {
-    req.flash('error', 'Invalid username or password');
+     
     console.log("login error")
     res.redirect('/log');
   }
@@ -155,12 +138,12 @@ app.post('/reg', async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 // Server-side validation
 if (  !username  ||!email || !password) {
-  req.flash('error', 'All fields are required');
+  
   return res.redirect('/log');
 }
 
 if (!/^[A-Za-z\s]+$/.test(username)) {
-  req.flash('error', 'Name must contain only letters and spaces');
+ 
   return res.redirect('/log');
 }
 
@@ -171,10 +154,10 @@ connection.query(query, [ email, hashedPassword,username], (err, results) => {
     if (err.code === 'ER_DUP_ENTRY') {
       if (err.message.includes('username')) {
         console.log(err)
-        req.flash('error', 'Username already exists');
+   
       } else if (err.message.includes('email')) {
         console.log(err)
-        req.flash('error', 'Email already exists');
+        
       } else {
         throw err;
       }
@@ -184,7 +167,7 @@ connection.query(query, [ email, hashedPassword,username], (err, results) => {
       throw err;
     }
   } else {
-    req.flash('success', 'Account created successfully');
+     
     console.log("succesfully")
        // Send email notification
      
