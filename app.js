@@ -20,20 +20,10 @@ const dbHost = process.env.DB_HOST;
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
 const dbName = process.env.DB_DATABASE;
-const secretKey = process.env.SECRET_KEY ;
-;
-
-//creating connection
-const dbConfig = {
-  host: dbHost,
-  user: dbUser,
-  password: dbPassword,
-  database: dbName
-  };
+const secretKey = process.env.SECRET_KEY;
 
 // MySQL Connection Pool for session store
 const sessionStore = new MySQLStore({
-  // MySQL connection options
   host: dbHost,
   user: dbUser,
   password: dbPassword,
@@ -43,34 +33,30 @@ const sessionStore = new MySQLStore({
   expiration: 86400000, // 1 day
 });
 
+// Create a new connection pool
+const connectionPool = mysql.createPool({
+  host: dbHost,
+  user: dbUser,
+  password: dbPassword,
+  database: dbName,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+});
+
+
+
+// Set up session and flash
 app.use(
   session({
     store: sessionStore,
-    secret:secretKey ,
+    secret: secretKey,
     resave: false,
     saveUninitialized: true,
   })
 );
 
-
-
-// Create a new connection
-const connection = mysql.createConnection(dbConfig);
-
-// Connect to the MySQL server
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to MySQL:', err.message);
-    return;
-  }
-
-  console.log('Connected to MySQL!');
-});
-
-//Set up session and flash:
- 
-  
-  app.use(flash());
+app.use(flash());
 
 //Add middleware for form data parsing:
 
