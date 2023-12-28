@@ -1,4 +1,6 @@
 // app.js
+// Import the 'dotenv' package
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const bcrypt = require('bcrypt');
@@ -9,12 +11,18 @@ const path = require('path');
 const mysql = require('mysql');
  
 
+// Access environment variables
+const dbHost = process.env.DB_HOST;
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
+const dbName = process.env.DB_DATABASE;
+
 //creating connection
 const dbConfig = {
-    host: 'localhost',
-    user: 'root',
-    password: 'Test@123',
-    database: 'nodejs'
+  host: dbHost,
+  user: dbUser,
+  password: dbPassword,
+  database: dbName
   };
 // Create a new connection
 const connection = mysql.createConnection(dbConfig);
