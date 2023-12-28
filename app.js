@@ -201,8 +201,14 @@ app.get('/logout', (req, res) => {
   });
 });
 
-
  
+connection.end((err) => {
+  if (err) {
+    console.error('Error ending the pool:', err);
+  } else {
+    console.log('Connection pool closed.');
+  }
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
