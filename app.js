@@ -9,7 +9,7 @@ const MySQLStore = require('express-mysql-session')(session);
 const flash = require('express-flash');
 const bodyParser = require('body-parser');
 const path = require('path');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 
 
