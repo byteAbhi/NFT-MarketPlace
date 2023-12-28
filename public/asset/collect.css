@@ -1,0 +1,453 @@
+*{
+    outline:none;
+  }
+  body{
+    --s: 25vmin;
+    --p: calc(var(--s) / 2);
+    --c1: pink;
+    --c2: dodgerblue;
+    --c3: white;
+    --bg: var(--c3);
+    --d: 4000ms;
+    --e: cubic-bezier(0.76, 0, 0.24, 1);
+    
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(45deg, var(--c1) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--c1) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--c2) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--c2) 75%);
+    background-size: var(--s) var(--s);
+    background-position: 
+      calc(var(--p) *  1) calc(var(--p) *  0), 
+      calc(var(--p) * -1) calc(var(--p) *  1), 
+      calc(var(--p) *  1) calc(var(--p) * -1), 
+      calc(var(--p) * -1) calc(var(--p) *  0);
+    animation: 
+      color var(--d) var(--e) infinite,
+      position var(--d) var(--e) infinite;
+  }
+  
+  @keyframes color {
+    0%, 25% {
+      --bg: var(--c3);
+    }
+    26%, 50% {
+      --bg: var(--c1);
+    }
+    51%, 75% {
+      --bg: var(--c3);
+    }
+    76%, 100% {
+      --bg: var(--c2);
+    }
+  }
+  
+  @keyframes position {
+    0% {
+      background-position: 
+        calc(var(--p) *  1) calc(var(--p) *  0), 
+        calc(var(--p) * -1) calc(var(--p) *  1), 
+        calc(var(--p) *  1) calc(var(--p) * -1), 
+        calc(var(--p) * -1) calc(var(--p) *  0);
+    }
+    25% {
+      background-position: 
+        calc(var(--p) *  1) calc(var(--p) *  4), 
+        calc(var(--p) * -1) calc(var(--p) *  5), 
+        calc(var(--p) *  1) calc(var(--p) *  3), 
+        calc(var(--p) * -1) calc(var(--p) *  4);
+    }
+    50% {
+      background-position: 
+        calc(var(--p) *  3) calc(var(--p) * 8), 
+        calc(var(--p) * -3) calc(var(--p) * 9), 
+        calc(var(--p) *  2) calc(var(--p) * 7), 
+        calc(var(--p) * -2) calc(var(--p) * 8);
+    }
+    75% {
+      background-position: 
+        calc(var(--p) *  3) calc(var(--p) * 12), 
+        calc(var(--p) * -3) calc(var(--p) * 13), 
+        calc(var(--p) *  2) calc(var(--p) * 11), 
+        calc(var(--p) * -2) calc(var(--p) * 12);
+    }
+    100% {    
+      background-position: 
+        calc(var(--p) *  5) calc(var(--p) * 16), 
+        calc(var(--p) * -5) calc(var(--p) * 17), 
+        calc(var(--p) *  5) calc(var(--p) * 15), 
+        calc(var(--p) * -5) calc(var(--p) * 16);
+    }
+  }
+  
+  @media (prefers-reduced-motion) {
+    body {
+      animation: none;
+    }
+  }
+  body{
+    margin:0px;
+    padding:0px;
+    font-family:sans-serif;
+    font-weight:bolder;
+    text-align:center;
+    /* background:#f3f2ef; */
+  }
+  img{
+    user-select:none;
+  }
+  /*CONTAINER*/
+  .container{
+    width:100%;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    padding:10px 0px;
+  }
+  .container img{
+    width:200px;
+    margin:5px;
+    cursor:zoom-in;
+    filter:grayscale(70%);
+    border-radius:5px;
+  }
+  .container img:hover{
+    filter:grayscale(0%);
+  }
+  
+  /*COLLECTION BAR*/
+  .bar-btn{
+    width:50px;
+    height:50px;
+    background-color:#fff;
+    border-radius:50%;
+    background-image:url("https://cdn2.iconfinder.com/data/icons/instagram-ui/48/jee-67-512.png");
+    background-size:100%;
+    background-repeat:no-repeat;
+    background-position:center center;
+    cursor:pointer;
+    opacity:0.9;
+    position:fixed;
+    right:10px;
+    top:10px;
+    box-shadow:0px 0px 5px 0px #262626;
+  }
+  .bar-btn:hover{
+    opacity:1;
+    
+  }
+  .collection-bar{
+    width:100%;
+    height:50vh;
+    padding:5px;
+    background:#f9f8fb;
+    box-shadow:-10px 0px 10px 1px #333;
+    visibility:hidden;
+    opacity:0;
+    position:fixed;
+    margin:0px auto;
+    bottom:0px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    text-align:center;
+    overflow-y:scroll;
+    transition:all 0.2s;
+  }
+
+  .collection-bar img{
+    width:150px;
+    border-radius:5px;
+    margin:5px;
+    cursor:url("https://i.hizliresim.com/3vppmt7.png"), auto;
+  }
+  .bar-btn:focus + .collection-bar{
+    opacity:1;
+    visibility:visible;
+  }
+  .collection-bar:focus{
+    opacity:1;
+    visibility:visible;
+  }
+  
+  /*WINDOW*/
+  .background{
+    width:100%;
+    position:fixed;
+    height:100vh;
+    background-color: rgba(000, 000, 0, 0.65);
+    top:0px;
+    cursor:zoom-out;
+    visibility:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+  }
+  .window .txt{
+    position:relative;
+    top:-130px;
+    color:#333;
+    visibility:hidden;
+    opacity:0;
+    font-size:18px;
+    user-select:none;
+    background:#fff;
+    display:inline;
+    padding:10px 15px;
+    border-radius:4px;
+  }
+  .background .window{
+    width:250px;
+    height:315px;
+    border-radius:10px;
+    background-color:#f3f2ef;
+    cursor:default;
+    text-align:center;
+    padding:15px;
+    margin:auto;
+    border:2px solid #ddd;
+    text-align:center;
+  }
+  .window img{
+    min-width:50%;
+    margin:0px auto;
+    border-radius:10px;
+  }
+  
+  .window .save-btn{
+    width:60px;
+    height:60px;
+    background-color:white;
+    border-radius:50%;
+    background-image:url("https://cdn0.iconfinder.com/data/icons/map-location-solid-style/91/Map_-_Location_Solid_Style_07-512.png");
+    background-size:60%;
+    background-repeat:no-repeat;
+    background-position:center center;
+    cursor:pointer;
+    border:2px solid #3333;
+    margin:auto;
+    margin-top:-10px;
+  }
+  .window .save-btn:hover{
+    background-size:70%;
+  }
+  
+  
+  /* collection ape */
+  .ape{
+    width:100%;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    padding:10px 0px;
+  }
+  
+  .ape img{
+    width:200px;
+    margin:5px;
+    cursor:zoom-in;
+    filter:grayscale(70%);
+    border-radius:5px;
+  }
+  .ape img:hover{
+    filter:grayscale(0%);
+  }
+
+/* collection cars */
+.cars{
+  width:100%;
+  margin:auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  padding:10px 0px;
+}
+
+.cars img{
+  width:200px;
+  margin:5px;
+  cursor:zoom-in;
+  filter:grayscale(70%);
+  border-radius:5px;
+}
+.cars img:hover{
+  filter:grayscale(0%);
+}
+
+/* collection god */
+.god{
+  width:100%;
+  margin:auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  padding:10px 0px;
+}
+
+.god img{
+  width:200px;
+  margin:5px;
+  cursor:zoom-in;
+  filter:grayscale(70%);
+  border-radius:5px;
+}
+.god img:hover{
+  filter:grayscale(0%);
+}
+
+/* collection  */
+  .women{
+    width:100%;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    padding:10px 0px;
+  }
+  
+  .women img{
+    width:200px;
+    margin:5px;
+    cursor:zoom-in;
+    filter:grayscale(70%);
+    border-radius:5px;
+  }
+  .women img:hover{
+    filter:grayscale(0%);
+  }
+
+/* collection sneakers */
+.sneakers{
+  width:100%;
+  margin:auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  padding:10px 0px;
+}
+
+.sneakers img{
+  width:200px;
+  margin:5px;
+  cursor:zoom-in;
+  filter:grayscale(70%);
+  border-radius:5px;
+}
+.sneakers img:hover{
+  filter:grayscale(0%);
+} 
+
+
+  /* navbar */
+  a,a:hover{
+    text-decoration: none;
+  }
+
+
+
+nav{
+  background: #071f30;
+  padding: 5px 20px;
+    padding-right: 5%;
+  display: flex;
+  align-items: center;
+}
+ nav ul li a{
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+
+ }
+
+ nav a:hover{
+  color:#ef4b3f ;
+ }
+
+nav ul li a::after{
+ content: '';
+ width: 0%;
+ height: 3px;
+ position: absolute;
+ bottom: -5px;
+ left: 50%;
+ transform: translateX(-50%);
+ background: #ffff;
+ transition:width 0.3s;
+}
+nav ul li a:hover::after{
+  width: 50% ;
+}
+ .logo{
+  flex: 1;
+   
+} 
+.logo a{
+  display: flex;
+  align-items: center;
+  font-size: 50px;
+}
+
+.logo a:hover{
+  color: #fff;
+}
+
+.logo img{
+  width: 100px; 
+  margin-right: 10px;
+}
+ 
+.menu{ 
+   display: flex;
+   align-items:center;
+   list-style: none;
+}
+.menu li{
+  font-size: 16px;
+  padding: 15px 10px;
+ } 
+  
+.toggle{
+  font-size: 30px;
+   display: none;
+}
+
+@media screen and (max-width: 600px) {
+  nav {
+    display:block ;
+    position: relative;
+    padding: 15px 20px;
+  }
+  .menu{
+    margin-top:15px ;
+    display: none;
+  }
+
+.menu.active,.toggle{
+  display: block ;
+}
+.toggle{
+  position: absolute;
+  top: 15px;
+  right:20px ;
+}
+ 
+}
+@keyframes anim4{
+  from{
+top:-100%;
+  }
+  to{
+ top:0%;
+  }
+}

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Literata">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>signup</title>
+  <style>
+    body {
+
+      margin: 0;
+      display: flex;
+      padding: 0;
+      justify-content: center;
+
+      align-items: center;
+
+      min-height: 100vh;
+      font-family: 'Jost', sans-serif;
+
+      background: linear-gradient(to bottom, #0f0c29, #302663,
+          #24243e);
+    }
+
+
+    .main {
+      width: 350px;
+      height: 500px;
+      background: red;
+      overflow: hidden;
+      background: url("https://wallpapercave.com/wp/wp11392441.png") no-repeat center / cover;
+      border-radius: 10px;
+      box-shadow: 5px 20px 50px #000;
+    }
+
+    #chk {
+      display: none;
+    }
+
+    .signup {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    label {
+      color: #fff;
+      font-size: 2.3em;
+      justify-content: center;
+      display: flex;
+      margin: 60px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .5s ease-in-out;
+    }
+
+    input {
+      width: 60%;
+      height: 20px;
+      background: #e0dede;
+      justify-content: center;
+      display: flex;
+      margin: 20px auto;
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 60%;
+      height: 40px;
+      margin: 10px auto;
+      justify-content: center;
+      display: block;
+      color: #fff;
+      background: #573b8a;
+      font-size: 1em;
+      font-weight: bold;
+      margin-top: 20px;
+      outline: none;
+      border-radius: 5px;
+      transition: .2s ease-in;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #6d44b8;
+    }
+
+    .login {
+      height: 450px;
+      background: #eee;
+      border-radius: 60% / 10%;
+      transform: translateY(-180px);
+      transition: .8s ease-in-out;
+    }
+
+    .login label {
+color: #6a1b9a;
+      transform: scale(.6);
+      cursor: pointer;
+      margin-top: -50px;
+      font-size: 73px;
+      color: transparent;
+      padding: 0px;
+    }
+
+    #chk:checked~.login {
+      transform: translateY(-500px);
+    }
+
+    #chk:checked~.login label {
+      transform: scale(1);
+    }
+
+    #chk:checked~.signup label {
+      transform: scale(.6);
+    }
+
+    /* --------------------------------------------------- */
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      /* background: #e1bee7; */
+    }
+
+    ul {
+      /* padding: 20px; */
+      width: 100%;
+      background: #fff;
+      display: flex;
+      margin-top: -5px;
+      flex-direction: column;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    ul li {
+      list-style: none;
+      padding-left: 4%;
+    }
+
+    ul li a {
+
+      color: #6a1b9a;
+      text-decoration: none;
+      display: flex;
+    }
+
+    ul li a .icon {
+      width: 60px;
+      height: 40px;
+      text-align: center;
+      overflow: hidden;
+      margin: 10px;
+    }
+
+    ul li a .icon .fa {
+      width: 100%;
+      height: 100%;
+      line-height: 40px;
+      font-size: 32px;
+      transition: 0.5s ease-in-out;
+      color: inherit;
+    }
+
+    ul li a .icon .fa-brands {
+      width: 100%;
+      height: 100%;
+      line-height: 40px;
+      font-size: 32px;
+      transition: 0.5s ease-in-out;
+      color: inherit;
+    }
+    
+
+    ul li a .icon .fa-solid .fa-grid {
+      width: 100%;
+      height: 100%;
+      line-height: 40px;
+      font-size: 32px;
+      transition: 0.5s ease-in-out;
+      color: inherit;
+    }
+
+    ul li a .icon .fa:last-child {
+      color: #e91e63;
+    }
+
+    ul li a .icon .fa-brands:last-child {
+      color: #e91e63;
+    }
+
+    ul li a:hover .icon .fa {
+      transform: translateY(-100%);
+    }
+
+    ul li a:hover .icon .fa-brands {
+      transform: translateY(-100%);
+    }
+
+    ul li a .name {
+      position: relative;
+      top: 20px;
+      height: 20px;
+      width: 100%;
+      display: block;
+      overflow: hidden;
+    }
+
+
+
+    /* -----------------------shaking-------------- */
+    .container {
+      display: flex;
+      position: relative;
+      margin-top: -35px;
+      left: 90%;
+      font-size: 25px ;
+      font-weight: bolder;
+      transform: translate(-50%, -50%);
+    }
+
+     
+
+    /*
+@keyframes shake {
+  0% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+  10% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  100% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+} */
+
+
+    /* -----------------------curve------------------- */
+    h2 {
+      color: #573b8a;
+      font-size: 20px;
+    }
+
+    /* ----------------------footer------------ */
+    .arrow {
+    position: relative;
+    /* top: 10%; */
+    margin-top: 18px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform: rotate(0deg);
+    cursor: pointer;
+}
+
+.arrow span {
+    display: block;
+    width: 1.5vw;
+    height: 1.5vw;
+    border-bottom: 5px solid rgb(212, 4, 4);
+    border-right: 5px solid rgb(255, 0, 0);
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite;
+}
+
+.arrow span:nth-child(2) {
+    animation-delay: -0.2s;
+}
+
+.arrow span:nth-child(3) {
+    animation-delay: -0.4s;
+}
+
+@keyframes animate {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(20px, 20px);
+    }
+}
+
+/* -------------------social ----------------------------- */
+.footer-col{
+   width: 75%;
+   /* padding: 0 65px; */
+   margin-top: -10px;
+   margin-left: 74px;
+   /* float: left; */
+   /* display: inline-block; */
+}
+/* .footer-col h4{
+	font-size: 18px;
+	color: #d74646;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+  margin-top: 83px;
+  margin-left: 56px;
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #e91e63;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+} */
+.footer-col .social-links a{
+	display: inline-block;
+  /* position: absolute; */
+
+    
+	height: 40px;
+	width: 40px;
+	background-color: rgba(255, 255, 255, 0.987);
+  margin :0px 10px 10px 0px;
+  
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #e84444;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+	color: #f0f0f0;
+	background-color: #ce0d0d;
+}
+/* @media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+} */
+
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/circletype@2.3.0/dist/circletype.min.js"> </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+  <div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true">
+
+    <div class="signup">
+      <form action="/reg" class="" method="post">
+        <label for="chk" aria-hidden="true">Sign up</label>
+ 
+        <input type="text" name="username" placeholder="User name" required="">
+        <input type="email" name="email" placeholder="Email" required="">
+        <input type="Password" name="password" placeholder="Password" required="">
+        <button>Sign up</button>
+      </form>
+
+    </div>
+    <div class="login">
+
+      <form>
+        <!-- curve text -->
+        <h2 id="yourStyle">Already have Account ?</h2>
+        <script>
+          new CircleType(document.getElementById('yourStyle'))
+            .radius(384);
+        </script>
+            <div class="arrow">
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+        <label for="chk" aria-hidden="true">login </label>
+        <div class="container"><span><a href="log"> Login</a></span></div>
+
+        <!-- <input type="email" name="email" placeholder="Email" required="">
+
+                <input type="Password" name="pswd" placeholder="Password" required="">
+
+                <button>Login</button> -->
+
+                 
+        <ul>
+          <li>
+            <a href="nft_MktP.html">
+              <div class="icon">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+
+              </div>
+              <div class="name">About Us</div>
+            </a>
+          </li>
+          <li>
+            <a href="live.html">
+              <div class="icon">
+
+                <i class="fa fa-address-book" aria-hidden="true"></i>
+                <i class="fa fa-address-book" aria-hidden="true"></i>
+
+              </div>
+              <div class="name">Contact Us</div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <div class="icon">
+                <i class="fa fa-cogs" aria-hidden="true"></i>
+                <i class="fa fa-cogs" aria-hidden="true"></i>
+              </div>
+              <div class="name">Services</div>
+            </a>
+          </li>
+          <li>
+        </ul>
+        <div class="footer-col">
+          <!-- <h4>follow us</h4> -->
+          <div class="social-links">
+           <a href="#"> <i class="fab fa-instagram" aria-hidden="true"></i></a>
+           <a href="#"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+           <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+           <a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+    
+          </div>
+        </div>
+      
+    </div>
+   
+     
+    </form>
+  </div>
+  </div>
+</body>
+
+</html>

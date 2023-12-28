@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  
+  <link rel="stylesheet" type="text/css" href="/asset/main.css">
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+</head>
+      
+<title  img src="/asset/NFT Logo.png"> GenZ NFT</title>
+<body>
+  <!-- preloader -->
+  <div class="preloader">
+    <div class="loader"></div>
+    <div class="nft-text">Loading NFT...</div>
+    <div class="bg"></div>
+  <div class="bg bg2"></div>
+  <div class="bg bg3"></div>
+  <div class="content">
+    <!-- <h1>Sliding Diagonals Background Effect</h1> -->
+  </div>
+  </div>
+    <script>
+      setTimeout(function() {
+    // When NFT is loaded, add "nft-loaded" class to the body
+    document.body.classList.add('nft-loaded');
+  }, 5000);
+  
+    </script>
+ 
+  <!-- logo and navbar -->
+  <nav>
+    <div class="logo">
+      <a href="#"> <img src="/asset/NFT Logo.png" alt="logo"></a>
+    </div>
+    <div class="toggle">
+      <a href="#"><ion-icon name="menu-outline"></ion-icon></a>
+    </div>
+
+    <ul class="menu">
+      <li><a href="log"> Home</a></li>
+      <li><a href="log"> Price</a></li>
+      <li><a href="log"> Collection</a></li>
+      <li><a href="log"> Login</a></li>
+      <li style="background: rgb(0, 200, 255); border-radius: 23px; font-weight: 300;"><a href="reg">create</a></li>
+      
+    </ul>
+  </nav>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script>
+     $(document).ready(function() {
+  setTimeout(function() {
+    $('#cont').addClass('loaded');
+    // Once the container has finished, the scroll appears
+    if ($('#cont').hasClass('loaded')) {
+      // It is so that once the container is gone, the entire preloader section is deleted
+      $('#preloader').delay(9000).queue(function() {
+        $(this).remove();
+      });}
+  }, 3000);});
+    $(function () {
+      $(".toggle").on("click", function () {
+        if ($(".menu").hasClass("active")) {
+          $(".menu").removeClass("active");
+          $(this).find("a").html("<ion-icon name='menu-outline'></ion-icon>");
+        }
+        else {
+          $(".menu").addClass("active");
+          $(this).find("a").html("<ion-icon name='close-outline'></ion-icon>");
+        }
+      })
+    });
+  </script>
+
+  <!-- landing page animated -->
+  <div class="land">
+    <section class="home common">
+      <div class="shape">
+        <img class="shape1" src="/asset/svg-1.svg" alt="">
+        <img class="shape2" src="/asset/svg-1.svg" alt="">
+        <img class="shape3" src="/asset/svg-1.svg" alt="">
+        <img class="shape4" src="/asset/svg-1.svg" alt="">
+        <img class="shape5" src="/asset/svg-1.svg" alt="">
+      </div>
+      <div class="home-inner">
+        <div class="text">
+          <h5>Non-Fungible Tokens</h5>
+          <h1>NFT</h1>
+          <p>
+            NFT marketplaces provide a secure and transparent platform 
+            for individuals to trade their digital assets.
+            They offer a range of features such as bidding,
+             auctions, and fixed-price sales. The transactions on these
+            marketplaces are recorded on a blockchain, ensuring the 
+            authenticity and provenance of the digital asset.
+
+          </p>
+          <a href="collection.html" class="btn">EXPLORE</a>
+        </div>
+
+        <div class="img">
+          <img src="/asset/NFT_Logo-removebg-preview.png" alt="">
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- preview card -->
+
+  <div class="previewbody">
+    <div class="recent">
+      <h1>RECENT TOP</h1>
+    </div>
+  <div class="scroll-menu">
+
+
+    <!-- first card  -->
+    <a href="https://opensea.io/collection/boredapeyachtclub">
+      
+  <main class="card-wrapper">
+    <div class="card">
+      <div class="card-img">
+        <img src="/asset/bayc-1.png" class="card-img-top" alt="" aria-hidden="true">
+        <div class="card-img-overlay">
+          <img src="https://github.com/mwororokevin/nft-preview-card-component/blob/master/images/icon-view.svg?raw=true">
+        </div>
+      </div>   
+      <div class="card-title">
+        <h3>
+          THE BORED APE #3429
+        </h3>
+      </div>
+      <div class="card-details">
+        <p>
+          The collection features profile <br> pictures of cartoon apes  .
+        </p>
+      </div>
+      <div class="card-meta">
+        <div class="left">
+          <span>
+            <svg width="11" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 10.216 5.5 18 0 10.216l5.5 3.263 5.5-3.262ZM5.5 0l5.496 9.169L5.5 12.43 0 9.17 5.5 0Z" fill="#00FFF8"/></svg>
+          </span> <p>49.780000 ETH</p>
+        </div>
+        <div class="right">
+          <span>
+            <svg width="17" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M8.305 2.007a6.667 6.667 0 1 0 0 13.334 6.667 6.667 0 0 0 0-13.334Zm2.667 7.334H8.305a.667.667 0 0 1-.667-.667V6.007a.667.667 0 0 1 1.334 0v2h2a.667.667 0 0 1 0 1.334Z" fill="#8BACD9"/></svg>
+          </span> <p>2 days left</p>
+        </div>
+      </div>
+      <div class="card-seperator"></div>
+      <div class="card-creator">
+        <div class="card-creator-avator">
+          <img src="https://github.com/mwororokevin/nft-preview-card-component/blob/master/images/image-avatar.png?raw=true" alt="">
+        </div>
+        <div class="card-creator-details">
+          <span>Creation of</span> 
+          <span> Yuga Labs US</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</a>
+      <!-- second card  -->
+      <a href="https://opensea.io/collection/nft-card-greek-gods-edition">
+      <main class="card-wrapper">
+        <div class="card">
+          <div class="card-img">
+            <img src="/asset/Untitled.jpeg" class="card-img-top" alt="" aria-hidden="true">
+            <div class="card-img-overlay">
+      <img src="https://github.com/mwororokevin/nft-preview-card-component/blob/master/images/icon-view.svg?raw=true">
+            </div>
+          </div>   
+          <div class="card-title">
+            <h3>
+               GREEK GODS#4040
+            </h3>
+          </div>
+          <div class="card-details">
+            <p>
+              The Greek Gods NFT <br> special God art .
+            </p>
+          </div>
+          <div class="card-meta">
+            <div class="left">
+              <span>
+                <svg width="11" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 10.216 5.5 18 0 10.216l5.5 3.263 5.5-3.262ZM5.5 0l5.496 9.169L5.5 12.43 0 9.17 5.5 0Z" fill="#00FFF8"/></svg>
+              </span> <p>0.15 ETH</p>
+            </div>
+            <div class="right">
+              <span>
+                <svg width="17" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M8.305 2.007a6.667 6.667 0 1 0 0 13.334 6.667 6.667 0 0 0 0-13.334Zm2.667 7.334H8.305a.667.667 0 0 1-.667-.667V6.007a.667.667 0 0 1 1.334 0v2h2a.667.667 0 0 1 0 1.334Z" fill="#8BACD9"/></svg>
+              </span> <p>6 days left</p>
+            </div>
+          </div>
+          <div class="card-seperator"></div>
+          <div class="card-creator">
+            <div class="card-creator-avator">
+              <img src="https://github.com/mwororokevin/nft-preview-card-component/blob/master/images/image-avatar.png?raw=true" alt="">
+            </div>
+            <div class="card-creator-details">
+              <span>Creation of</span> 
+              <span> GREEK GODS</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </a>
+
+          <!-- third card  -->
+          <a href="https://opensea.io/collection/supercar-nft">
+            <main class="card-wrapper">
+              <div class="card">
+                <div class="card-img">
+                  <img src="/asset/supercars.jpeg" class="card-img-top" alt="" aria-hidden="true">
+                  <div class="card-img-overlay">
+            <img src="https://github.com/mwororokevin/nft-preview-card-component/blob/master/images/icon-view.svg?raw=true">
+                  </div>
+                </div>   
+                <div class="card-title">
+                  <h3>
+                    SUPERCARS #3429
+                  </h3>
+                </div>
+                <div class="card-details">
+                  <p>
+                    Collection of luxury NFT cars <br>Hot wheels art work.
+                  </p>
+                </div>
+                <div class="card-meta">
+                  <div class="left">
+                    <span>
+                      <svg width="11" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 10.216 5.5 18 0 10.216l5.5 3.263 5.5-3.262ZM5.5 0l5.496 9.169L5.5 12.43 0 9.17 5.5 0Z" fill="#00FFF8"/></svg>
+                    </span> <p>0.041 ETH</p>
+                  </div>
+                  <div class="right">
+                    <span>
+                      <svg width="17" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M8.305 2.007a6.667 6.667 0 1 0 0 13.334 6.667 6.667 0 0 0 0-13.334Zm2.667 7.334H8.305a.667.667 0 0 1-.667-.667V6.007a.667.667 0 0 1 1.334 0v2h2a.667.667 0 0 1 0 1.334Z" fill="#8BACD9"/></svg>
+                    </span> <p>5 days left</p>
+                  </div>
+                </div>
+                <div class="card-seperator"></div>
+                <div class="card-creator">
+                  <div class="card-creator-avator">
+                    <img src="https://github.com/mwororokevin/nft-preview-card-component/blob/master/images/image-avatar.png?raw=true" alt="">
+                  </div>
+                  <div class="card-creator-details">
+                    <span>Creation of</span> 
+                    <span>Umair Masoom</span>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </a>
+      
+      
+          <a href="https://app.airnfts.com/nft/Abstractwoman_1635587305721">
+            <main class="card-wrapper">
+              <div class="card">
+                <div class="card-img">
+                  <img src="/asset/abstract women.jpeg " class="card-img-top" alt="" aria-hidden="true">
+                  <div class="card-img-overlay">
+            <img src="https://github.com/mwororokevin/nft-preview-card-component/blob/master/images/icon-view.svg?raw=true">
+                  </div>
+                </div>   
+                <div class="card-title">
+                  <h3>
+                    ABSTRACT WOMEN#3429
+                  </h3>
+                </div>
+                <div class="card-details">
+                  <p>
+                    Our collection promotes Women
+                    <br> empowerment and calm.
+                  </p>
+                </div>
+                <div class="card-meta">
+                  <div class="left">
+                    <span>
+                      <svg width="11" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 10.216 5.5 18 0 10.216l5.5 3.263 5.5-3.262ZM5.5 0l5.496 9.169L5.5 12.43 0 9.17 5.5 0Z" fill="#00FFF8"/></svg>
+                    </span> <p>0.39 ETH</p>
+                  </div>
+                  <div class="right">
+                    <span>
+                      <svg width="17" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M8.305 2.007a6.667 6.667 0 1 0 0 13.334 6.667 6.667 0 0 0 0-13.334Zm2.667 7.334H8.305a.667.667 0 0 1-.667-.667V6.007a.667.667 0 0 1 1.334 0v2h2a.667.667 0 0 1 0 1.334Z" fill="#8BACD9"/></svg>
+                    </span> <p>2 days left</p>
+                  </div>
+                </div>
+                <div class="card-seperator"></div>
+                <div class="card-creator">
+                  <div class="card-creator-avator">
+                    <img src="https://github.com/mwororokevin/nft-preview-card-component/blob/master/images/image-avatar.png?raw=true" alt="">
+                  </div>
+                  <div class="card-creator-details">
+                    <span>Creation of</span> 
+                    <span> Yam Karkai</span>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </a>
+          <!-- fifth card  -->
+<a href="https://opensea.io/collection/rtfkt-nike-cryptokicks">
+  <main class="card-wrapper">
+    <div class="card">
+      <div class="card-img">
+        <img src="/asset/images.jpeg" class="card-img-top" alt="" aria-hidden="true">
+        <div class="card-img-overlay">
+          <img src="https://github.com/mwororokevin/nft-preview-card-component/blob/master/images/icon-view.svg?raw=true">
+        </div>
+      </div>   
+      <div class="card-title">
+        <h3>
+          SNEAKER HEAD #1829
+        </h3>
+      </div>
+      <div class="card-details">
+        <p>
+          NIKE sneaker collection <br> with latest design.
+        </p>
+      </div>
+      <div class="card-meta">
+        <div class="left">
+          <span>
+            <svg width="11" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 10.216 5.5 18 0 10.216l5.5 3.263 5.5-3.262ZM5.5 0l5.496 9.169L5.5 12.43 0 9.17 5.5 0Z" fill="#00FFF8"/></svg>
+          </span> <p>0.21 ETH</p>
+        </div>
+        <div class="right">
+          <span>
+            <svg width="17" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M8.305 2.007a6.667 6.667 0 1 0 0 13.334 6.667 6.667 0 0 0 0-13.334Zm2.667 7.334H8.305a.667.667 0 0 1-.667-.667V6.007a.667.667 0 0 1 1.334 0v2h2a.667.667 0 0 1 0 1.334Z" fill="#8BACD9"/></svg>
+          </span> <p>1 days left</p>
+        </div>
+      </div>
+      <div class="card-seperator"></div>
+      <div class="card-creator">
+        <div class="card-creator-avator">
+          <img src="https://github.com/mwororokevin/nft-preview-card-component/blob/master/images/image-avatar.png?raw=true" alt="">
+        </div>
+        <div class="card-creator-details">
+          <span>Creation of</span> 
+          <span> Jules Wyvern</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</a>
+</div>
+ </div>
+
+
+ <!-- about section  -->
+ <footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-col">
+        <h4>company</h4>
+        <ul>
+          <li><a href="#">about us</a></li>
+          <li><a href="#">our services</a></li>
+          <li><a href="#">privacy policy</a></li>
+          <li><a href="#">affiliate program</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>get help</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <!-- <li><a href="#">shipping</a></li> -->
+          <!-- <li><a href="#">returns</a></li> -->
+          <li><a href="#">order status</a></li>
+          <li><a href="#">payment options</a></li>
+        </ul>
+      </div>
+      <!-- <div class="footer-col">
+        <h4>online shop</h4>
+        <ul>
+          <li><a href="#">watch</a></li>
+          <li><a href="#">bag</a></li>
+          <li><a href="#">shoes</a></li>
+          <li><a href="#">dress</a></li>
+        </ul>
+      </div> -->
+      <div class="footer-col">
+        <h4>follow us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+ 
+
+  <script src="script.js" type="text/js"></script>
+
+
+</body>
+
+</html>
