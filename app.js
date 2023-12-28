@@ -20,7 +20,7 @@ const dbHost = process.env.DB_HOST;
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
 const dbName = process.env.DB_DATABASE;
-const secretKey = process.env.SECRET_KEY ;
+const secretKey = process.env.SESSION_SECRET;
 ;
 
 //creating connection
