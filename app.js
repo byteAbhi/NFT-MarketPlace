@@ -48,7 +48,7 @@ const dbConfig = {
   app.use(
     session({
       store: sessionStore,
-      secret: secretKey, // Set your secret key here
+      secret:  'fb3303a490ad7ec1f1079a5323433fec0bd1bf048a4c0412c5e8ad8ad5db556f', // Set your secret key here
       resave: false,
       saveUninitialized: true,
     })
