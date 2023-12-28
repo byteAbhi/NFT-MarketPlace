@@ -69,16 +69,6 @@ connection.connect((err) => {
   console.log('Connected to MySQL!');
 });
 
-//Set up session and flash:
- app.use(
-  session({
-    store: sessionStore,
-    secret:secretKey ,
-    resave: false,
-    saveUninitialized: true,
-  })
-);
-
  
 
 //Add middleware for form data parsing:
