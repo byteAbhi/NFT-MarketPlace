@@ -29,7 +29,6 @@ const dbConfig = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  PORT:3306,
   connectionLimit: 10, // Adjust as needed
   connectTimeout: 60000, // 60 seconds
   };
