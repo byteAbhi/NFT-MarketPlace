@@ -58,16 +58,27 @@ const dbConfig = {
 
 
 // Create a new connection
-const connection = mysql.createConnection(dbConfig);
+const pool = mysql.createPool(dbConfig);
 
 // Connect to the MySQL server
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to MySQL:', err.message);
-    return;
-  }
+// Use the pool's 'acquire' event to log when a connection is acquired
+pool.on('acquire', (connection) => {
+  console.log('Connection %d acquired', connection.threadId);
+});
 
-  console.log('Connected to MySQL!');
+// Use the pool's 'connection' event to log when a new connection is made within the pool
+pool.on('connection', (connection) => {
+  console.log('New connection made within the pool: %d', connection.threadId);
+});
+
+// Use the pool's 'enqueue' event to log when a callback is added to the waiting list
+pool.on('enqueue', () => {
+  console.log('Waiting for available connection slot');
+});
+
+// Use the pool's 'release' event to log when a connection is released back to the pool
+pool.on('release', (connection) => {
+  console.log('Connection %d released', connection.threadId);
 });
 
  
@@ -124,65 +135,81 @@ app.post('/log', async (req, res) => {
 });
 
 app.post('/reg', async (req, res) => {
-  const {   username,email, password } = req.body;
-  
+  const { username, email, password } = req.body;
+
   const hashedPassword = await bcrypt.hash(password, 10);
-// Server-side validation
-if (  !username  ||!email || !password) {
+
+  // Server-side validation
+  if (!username || !email || !password) {
+    return res.redirect('/log');
+  }
+
+  if (!/^[A-Za-z\s]+$/.test(username)) {
+    return res.redirect('/log');
+  }
+
+  const query = 'INSERT INTO loginuser (email, user_pass, username) VALUES (?, ?, ?)';
   
-  return res.redirect('/log');
-}
-
-if (!/^[A-Za-z\s]+$/.test(username)) {
- 
-  return res.redirect('/log');
-}
-
- 
-const query = 'INSERT INTO loginuser ( email , user_pass,username) VALUES (?, ?, ? )';
-connection.query(query, [ email, hashedPassword,username], (err, results) => {
-  if (err) {
-    if (err.code === 'ER_DUP_ENTRY') {
-      if (err.message.includes('username')) {
-        console.log(err)
-   
-      } else if (err.message.includes('email')) {
-        console.log(err)
-        
-      } else {
-        throw err;
-      }
+  // Use the pool to get a connection
+  pool.getConnection((err, connection) => {
+    if (err) {
+      console.error('Error getting MySQL connection:', err.message);
       res.redirect('/log');
-      
-    } else {
-      throw err;
+      return;
     }
-  } else {
-     
-    console.log("succesfully")
-       // Send email notification
-     
-      res.redirect('/log');
-    }
-  });
-});
 
+    connection.query(query, [email, hashedPassword, username], (err, results) => {
+      // Release the connection back to the pool
+      connection.release();
 
-const getUser = (username) => {
-  return new Promise((resolve, reject) => {
-    const query = 'SELECT * FROM loginuser WHERE username = ?';
-    connection.query(query, [username], (err, results) => {
-      if (err) { 
-        reject(err);
-        console.log("invalid");
+      if (err) {
+        if (err.code === 'ER_DUP_ENTRY') {
+          if (err.message.includes('username')) {
+            console.log(err);
+          } else if (err.message.includes('email')) {
+            console.log(err);
+          } else {
+            console.error('Unexpected error:', err);
+          }
+          res.redirect('/log');
+        } else {
+          console.error('Error executing query:', err);
+          res.redirect('/log');
+        }
       } else {
-        console.log('Results from getUser query:', results);
-        resolve(results[0]);
+        console.log('Successfully inserted into loginuser');
+        // Send email notification
+        res.redirect('/log');
       }
     });
   });
-};
+});
 
+const getUser = (username) => {
+  return new Promise((resolve, reject) => {
+    pool.getConnection((err, connection) => {
+      if (err) {
+        console.error('Error getting MySQL connection:', err.message);
+        reject(err);
+        return;
+      }
+
+      const query = 'SELECT * FROM loginuser WHERE username = ?';
+      connection.query(query, [username], (err, results) => {
+        // Release the connection back to the pool
+        connection.release();
+
+        if (err) {
+          console.error('Error executing query:', err.message);
+          reject(err);
+        } else {
+          console.log('Results from getUser query:', results);
+          resolve(results[0]);
+        }
+      });
+    });
+  });
+};
 
 //   Add a route for the dashboard (you'll create this view later):
 app.get('/nft_MktP', (req, res) => {
@@ -201,16 +228,18 @@ app.get('/logout', (req, res) => {
   });
 });
 
+
  
-connection.end((err) => {
-  if (err) {
-    console.error('Error ending the pool:', err);
-  } else {
-    console.log('Connection pool closed.');
-  }
-});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
+});
+process.on('SIGINT', () => {
+  connection.end((err) => {
+    if (err) {
+      console.error('Error ending MySQL connection:', err.message);
+    }
+    process.exit();
+  });
 });
