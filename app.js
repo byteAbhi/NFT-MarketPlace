@@ -237,7 +237,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 process.on('SIGINT', () => {
-  connection.end((err) => {
+  pool.end((err) => {
     if (err) {
       console.error('Error ending MySQL connection:', err.message);
     }
