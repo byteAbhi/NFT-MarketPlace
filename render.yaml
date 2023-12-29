@@ -1,0 +1,21 @@
+services:
+  - name: NFT MarketPlace
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: nodejs
+          property: connectionParameters.host
+      - key: DB_USER
+        fromDatabase:
+          name: nodejs
+          property: connectionParameters.user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: nodejs
+          property: connectionParameters.password
+      - key: DB_NAME
+        fromDatabase:
+          name: nodejs
+          property: connectionParameters.database
