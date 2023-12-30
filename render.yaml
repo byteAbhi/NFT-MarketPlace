@@ -4,18 +4,10 @@ services:
     startCommand: npm start
     envVars:
       - key: DB_HOST
-        fromDatabase:
-          name: nodejs
-          property: connectionParameters.host
+        fromEnv: DB_HOST
       - key: DB_USER
-        fromDatabase:
-          name: nodejs
-          property: connectionParameters.user
+        fromEnv: DB_USER
       - key: DB_PASSWORD
-        fromDatabase:
-          name: nodejs
-          property: connectionParameters.password
-      - key: DB_NAME
-        fromDatabase:
-          name: nodejs
-          property: connectionParameters.database
+        fromEnv: DB_PASSWORD
+      - key: DB_DATABASE
+        fromEnv: DB_DATABASE
