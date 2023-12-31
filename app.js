@@ -10,7 +10,7 @@ const flash = require('express-flash');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mysql = require('mysql2');
-
+ 
 
 
 
@@ -21,6 +21,7 @@ const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
 const dbName = process.env.DB_DATABASE;
 const secretKey = process.env.SESSION_SECRET;
+const port = process.env.PORT;
 ;
 
 //creating connection
@@ -232,9 +233,8 @@ app.get('/logout', (req, res) => {
 
  
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, '127.0.0.1', 4, () => {
+  console.log(`Server is running on http://127.0.0.1:${port}`);
 });
 process.on('SIGINT', () => {
   pool.end((err) => {
