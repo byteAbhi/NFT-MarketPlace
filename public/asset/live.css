@@ -93,7 +93,9 @@ position: absolute;
 top: 15px;
 right:20px ;
 }
-
+span {
+	font-size: 10px; /* Adjust font size for smaller screens */
+  }
 }
 @keyframes anim4{
 from{
