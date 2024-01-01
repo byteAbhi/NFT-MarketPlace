@@ -33,23 +33,23 @@ const dbConfig = {
   connectTimeout: 60000, // 60 seconds
   };
 
-  // const sessionStore = new MySQLStore({
-  //   // MySQL connection options
-  //   expiration: 86400000, // Session lifetime in milliseconds (1 day)
-  //   createDatabaseTable: true, // Create the sessions table if it doesn't exist
-  //   schema: {
-  //     tableName: 'sessions',
-  //     columnNames: {
-  //       session_id: 'session_id',
-  //       expires: 'expires',
-  //       data: 'data',
-  //     },
-  //   },
-  // }, mysql.createPool(dbConfig));
+  const sessionStore = new MySQLStore({
+    // MySQL connection options
+    expiration: 86400000, // Session lifetime in milliseconds (1 day)
+    createDatabaseTable: true, // Create the sessions table if it doesn't exist
+    schema: {
+      tableName: 'sessions',
+      columnNames: {
+        session_id: 'session_id',
+        expires: 'expires',
+        data: 'data',
+      },
+    },
+  }, mysql.createPool(dbConfig));
   
   app.use(
     session({
-      // store: sessionStore,
+      store: sessionStore,
       secret:  process.env.SESSION_SECRET, // Set your secret key here
       resave: false,
       saveUninitialized: true,
