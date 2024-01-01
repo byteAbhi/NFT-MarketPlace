@@ -26,10 +26,12 @@
   </div>
   </div>
     <script>
-      setTimeout(function() {
-    // When NFT is loaded, add "nft-loaded" class to the body
-    document.body.classList.add('nft-loaded');
-  }, 5000);
+       setTimeout(() => {
+    // Display the content when the preloader is done loading
+    document.querySelector('.content').style.display = 'block';
+    // Hide the preloader (you might want to add fade-out animations, etc.)
+    document.querySelector('.preloader').style.display = 'none';
+  }, 3000);
   
     </script>
  
