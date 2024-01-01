@@ -93,9 +93,7 @@ position: absolute;
 top: 15px;
 right:20px ;
 }
-span {
-	font-size: 10px; /* Adjust font size for smaller screens */
-  }
+ 
 }
 @keyframes anim4{
 from{
@@ -156,3 +154,16 @@ p {
 	0% { background-position: 0% 50%; }
 	100% { background-position: 100% 50%; }
 }
+@media screen and (max-width: 600px) {
+	p { font-size: 1em;
+		width: 0.5%;
+		top: 0%;
+		left: 16%;
+		align-items: center;
+		}
+		span { 
+			font: 700 2.5em/1 "Oswald", sans-serif;
+		}
+	}
+	
+ 
