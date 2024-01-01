@@ -158,11 +158,35 @@ p {
 	p { font-size: 1em;
 		width: 0.5%;
 		top: 0%;
-		left: 16%;
+		left: 25%;
 		align-items: center;
 		}
 		span { 
-			font: 700 2.5em/1 "Oswald", sans-serif;
+			
+			font: 700 2em "Oswald", sans-serif;
+			letter-spacing: 0;
+			padding: .25em 0 .325em;
+			display: flex;
+			margin: 0 auto;
+			text-shadow: 0 0 80px rgba(255,255,255,.5);
+	  
+	  /* Clip Background Image */
+	  
+			background: url(https://i.ibb.co/RDTnNrT/animated-text-fill.png) repeat-y;
+			-webkit-background-clip: text;
+			background-clip: text;
+	  
+	  /* Animate Background Image */
+	  
+			-webkit-text-fill-color: transparent;
+			-webkit-animation: aitf 80s linear infinite;
+	  
+	  /* Activate hardware acceleration for smoother animations */
+	  
+			-webkit-transform: translate3d(0,0,0);
+			-webkit-backface-visibility: hidden;
+	  
+		
 		}
 	}
 	
