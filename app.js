@@ -216,13 +216,13 @@ const getUser = (username) => {
 };
 
 //   Add a route for the dashboard (you'll create this view later):
-app.get('/nft_MktP', (req, res) => {
-  if (req.session.user) {
-    res.render('nft_MktP', { user: req.session.user });
-  } else {
-    res.redirect('/log');
-  }
-});
+// app.get('/nft_MktP', (req, res) => {
+//   if (req.session.user) {
+//     res.render('nft_MktP', { user: req.session.user });
+//   } else {
+//     res.redirect('/log');
+//   }
+// });
 
 //   Add a route to handle user logout:
 app.get('/logout', (req, res) => {
