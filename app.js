@@ -116,6 +116,9 @@ app.get('/log', (req, res) => {
 app.get('/', (req, res) => {
   res.render('index');
 });
+app.get('/nft_Mktp', (req, res) => {
+  res.render('nft_Mktp');
+});
  
  
  
